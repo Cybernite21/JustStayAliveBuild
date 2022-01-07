@@ -1,36 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <title>%UNITY_WEB_NAME%</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>
-    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Just Stay Alive</title>
+  </head>
+  <body style="text-align: center">
+    <canvas id="unity-canvas" width=1280 height=720 style="width: 1280px; height: 720px; background: #231F20"></canvas>
+    <script src="Build/WebGl Builds.loader.js"></script>
     <script>
-        var gameInstance =
-            UnityLoader.instantiate("gameContainer",
-                "%UNITY_WEBGL_BUILD_URL%", {
-                    onProgress: UnityProgress
-                });
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/WebGl Builds.data",
+        frameworkUrl: "Build/WebGl Builds.framework.js",
+        codeUrl: "Build/WebGl Builds.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Just Stay Alive",
+        productVersion: "1.0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
     </script>
-</head>
-
-<body>
-    <div class="webgl-content">
-        <div id="gameContainer" style="width: %UNITY_WIDTH%px;height: %UNITY_HEIGHT%px"></div>
-        <!-- div class="footer">
-                <div class="webgl-logo"></div>
-                <div class="fullscreen"onclick="gameInstance.SetFullscreen(1)"></div>
-                <div class="title">%UNITY_WEB_NAME%</div>
-            </div -->
-        <script type='text/javascript' src="https://cdn.applixir.com/applixir.sdk3.0m.js"></script>
-        <div id="applixir_vanishing_div" hidden>
-            <iframe id="applixir_parent" allowed="autoplay"></iframe>
-        </div>
-    </div>
-</body>
-
+  </body>
 </html>
